@@ -6,7 +6,8 @@ import streamlit as st
 from google import genai
 
 # 1. Setup API Authentication
-os.environ["GEMINI_API_KEY"] = "AQ.Ab8RN6L3-_Q8OsqP7yWhzhEbQIWT0npGjEpXqMj1f7NzqDW3ug"
+if "GEMINI_API_KEY" in st.secrets:
+    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
 client = genai.Client()
 
 PROFILES_FILE = "user_profiles_streamlit.json"
